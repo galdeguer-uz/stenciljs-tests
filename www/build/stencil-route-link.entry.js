@@ -1,7 +1,7 @@
-import { r as registerInstance, h, g as getElement } from './index-740e01dd.js';
+import { r as registerInstance, h, g as getElement } from './index-1d28747c.js';
 import { m as matchPath } from './match-path-02f6df12.js';
 import { i as isModifiedEvent } from './dom-utils-3e75f5ea.js';
-import { A as ActiveRouter } from './active-router-070a084f.js';
+import { A as ActiveRouter } from './active-router-3af3f5dd.js';
 import './location-utils-6419c2b3.js';
 
 const getUrl = (url, root) => {

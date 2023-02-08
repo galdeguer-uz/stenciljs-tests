@@ -1,4 +1,4 @@
-import { Component, Host, Prop, h, Element } from '@stencil/core';
+import { Component, Host, Prop, h, Element, Event, EventEmitter } from '@stencil/core';
 
 const COMPONENT_ID: string = 'Toolkit.Button';
 
@@ -17,11 +17,16 @@ export class TlkButton {
   }
 
   @Prop() theme: any;
-  @Prop() onMounted: (themeManagerElement: HTMLElement) => void = () => {};
+
+  @Event() mounted: EventEmitter;
 
   @Element() self: HTMLElement;
 
   static COMPONENT_ID: string = COMPONENT_ID;
+
+  mountedHandler() {
+    this.mounted.emit(this.self);
+  }
 
   componentDidLoad() {
     const newStyle = document.createElement('style');
@@ -40,7 +45,7 @@ export class TlkButton {
     }
 
     /* Call the onMounted callback */
-    this.onMounted(this.self);
+    this.mountedHandler();
   }
 
   render() {

@@ -1,25 +1,29 @@
 import { Component, Host, Prop, h, Element } from '@stencil/core';
 
-const extendStyles = (styles: object, nodes: NodeList) => {
-  nodes.forEach((eachChild) => {
-    if (eachChild['COMPONENT_ID']) {
-      const stylesByComponent: string = styles[eachChild['COMPONENT_ID']];
-      eachChild['theme'] = stylesByComponent;     
-    }
+import COMPONENT_ID from './constants';
 
-    extendStyles(styles, eachChild.childNodes);
-  });
-};
+import extendStyles from './helpers/extend-styles';
 
 @Component({
   tag: 'tlk-theme-manager',
   shadow: true,
 })
 export class TlkThemeManager {
+  constructor() {
+    Object.defineProperty(this.self, 'COMPONENT_ID', {
+      value: COMPONENT_ID,
+      configurable: false,
+      writable: false,
+    });
+  }
+
+  @Prop() avoidInheritStyles: boolean = false;
   @Prop() styles: object = {};
   @Prop() onMounted: (themeManagerElement: HTMLElement) => void = () => {};
 
   @Element() self: HTMLElement;
+
+  static COMPONENT_ID: string = COMPONENT_ID;
 
   componentWillLoad() {
     extendStyles(this.styles, this.self.childNodes);

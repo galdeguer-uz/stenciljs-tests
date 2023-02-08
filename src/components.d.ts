@@ -9,7 +9,6 @@ export namespace Components {
     interface AppRoot {
     }
     interface TlkButton {
-        "onMounted": (themeManagerElement: HTMLElement) => void;
         "theme": any;
     }
     interface TlkPortal {
@@ -19,8 +18,10 @@ export namespace Components {
         "onAnimationStart": (event: AnimationEvent) => void;
         "onMounted": (portalElement: HTMLElement) => void;
         "onTransitionEnd": (event: TransitionEvent) => void;
+        "theme": any;
     }
     interface TlkThemeManager {
+        "avoidInheritStyles": boolean;
         "onMounted": (themeManagerElement: HTMLElement) => void;
         "styles": object;
     }
@@ -61,7 +62,7 @@ declare namespace LocalJSX {
     interface AppRoot {
     }
     interface TlkButton {
-        "onMounted"?: (themeManagerElement: HTMLElement) => void;
+        "onMounted"?: (event: CustomEvent<any>) => void;
         "theme"?: any;
     }
     interface TlkPortal {
@@ -70,8 +71,10 @@ declare namespace LocalJSX {
         "onAnimationStart"?: (event: AnimationEvent) => void;
         "onMounted"?: (portalElement: HTMLElement) => void;
         "onTransitionEnd"?: (event: TransitionEvent) => void;
+        "theme"?: any;
     }
     interface TlkThemeManager {
+        "avoidInheritStyles"?: boolean;
         "onMounted"?: (themeManagerElement: HTMLElement) => void;
         "styles"?: object;
     }
