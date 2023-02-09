@@ -1,4 +1,4 @@
-import { r as registerInstance, h, f as Host, g as getElement } from './index-1d28747c.js';
+import { r as registerInstance, h, f as Host, g as getElement } from './index-b0ee2f68.js';
 
 const COMPONENT_ID = 'Toolkit.Portal';
 
@@ -31,8 +31,9 @@ let TlkPortal = class {
     this.attachPortalTo(this.container);
   }
   componentWillLoad() {
+    var _a;
     /* Check if it's inside another tlk-portal */
-    let containerToAttach = this.self.parentElement.closest('tlk-portal');
+    let containerToAttach = (_a = this.self.parentElement) === null || _a === void 0 ? void 0 : _a.closest('tlk-portal');
     /* If we have the container prop defined, use it */
     if (this.container) {
       containerToAttach = this.container;

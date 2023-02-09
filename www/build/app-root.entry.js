@@ -1,5 +1,5 @@
-import { r as registerInstance, h } from './index-1d28747c.js';
-import { T as TlkButton } from './index.logic-d005293a.js';
+import { r as registerInstance, h } from './index-b0ee2f68.js';
+import { T as TlkButton } from './index.logic-915d1710.js';
 
 const buttonStyles$1 = {
   [TlkButton.COMPONENT_ID]: `
@@ -95,14 +95,23 @@ const buttonStyles = {
 
 const allUzStyles = Object.assign({}, buttonStyles);
 
-const appRootCss = "header{background:#5851ff;color:white;height:56px;display:flex;align-items:center;box-shadow:0 2px 5px 0 rgba(0, 0, 0, 0.26)}h1{font-size:1.4rem;font-weight:500;color:#fff;padding:0 12px}";
+const appRootCss = "header{background:#5851ff;color:white;height:56px;display:flex;align-items:center;box-shadow:0 2px 5px 0 rgba(0, 0, 0, 0.26)}main{padding:20px}h1{font-size:1.4rem;font-weight:500;color:#fff;padding:0 12px}";
 
 let AppRoot = class {
   constructor(hostRef) {
     registerInstance(this, hostRef);
+    this.myInfo = {};
+    this.controlledChecked = false;
+    this.onChangeCheckbox = (event) => {
+      this.controlledChecked = event.detail.checked;
+    };
+    this.onClickHandler = this.onClickHandler.bind(this);
+  }
+  onClickHandler() {
+    this.myInfo = { test: 111 };
   }
   render() {
-    return (h("div", null, h("main", null, h("div", { style: { padding: '40px', display: 'flex', flexDirection: 'column', gap: '10px' } }, h("div", null, h("tlk-button", null, "Unstyled button")), h("div", null, h("tlk-theme-manager", { styles: allUzStyles$1 }, h("tlk-button", null, "UZ Button"))), h("div", null, h("tlk-theme-manager", { styles: allUzStyles }, h("tlk-button", null, "UT Button")))))));
+    return (h("div", null, h("main", null, h("div", { style: { padding: '40px', display: 'flex', flexDirection: 'column', gap: '10px' } }, h("div", null, h("tlk-button", null, "Unstyled button")), h("div", null, h("tlk-theme-manager", { styles: allUzStyles$1 }, h("tlk-button", null, "UZ Button"))), h("div", null, h("tlk-theme-manager", { styles: allUzStyles }, h("tlk-button", null, "UT Button")))), h("hr", null), h("tlk-provider", { value: this.myInfo }, h("div", null, "Hi! I'm inside the tlk-provider"), h("tlk-consumer", { renderer: (value) => (h("div", null, h("p", null, "Test: ", JSON.stringify(value)))) }), h("button", { onClick: this.onClickHandler }, "Click me")), h("hr", null), h("div", null, h("tlk-checkbox", { checkboxId: "basic-checkbox" }, "Check me!")), h("div", null, h("tlk-checkbox", { checkboxId: "default-checked", defaultChecked: true }, "Default checked!")), h("div", null, h("tlk-checkbox", { checkboxId: "controlled-checkbox", checked: this.controlledChecked, onCheckboxChanged: this.onChangeCheckbox }, "Controlled checkbox!")))));
   }
 };
 AppRoot.style = appRootCss;

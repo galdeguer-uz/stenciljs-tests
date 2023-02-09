@@ -53,7 +53,7 @@ export class TlkPortal {
 
   componentWillLoad() {
     /* Check if it's inside another tlk-portal */
-    let containerToAttach: HTMLElement = this.self.parentElement.closest('tlk-portal')
+    let containerToAttach: HTMLElement = this.self.parentElement?.closest('tlk-portal')
 
     /* If we have the container prop defined, use it */
     if (this.container) {

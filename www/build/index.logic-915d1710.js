@@ -1,6 +1,6 @@
-import { r as registerInstance, e as createEvent, h, f as Host, g as getElement } from './index-1d28747c.js';
+import { r as registerInstance, e as createEvent, h, f as Host, g as getElement } from './index-b0ee2f68.js';
 
-const indexStylesCss = "button{align-items:center;display:inline-flex;flex:0 0 auto;justify-content:center;overflow:hidden;position:relative;text-align:center;user-select:none;vertical-align:middle;white-space:nowrap}button:disabled{cursor:not-allowed}button:not(:disabled){cursor:pointer}button:not(:disabled):hover{text-decoration:none}button:not(:disabled):focus{outline:0}";
+const indexStylesCss = ".tlk-button{align-items:center;display:inline-flex;flex:0 0 auto;justify-content:center;overflow:hidden;position:relative;text-align:center;user-select:none;vertical-align:middle;white-space:nowrap}button:disabled{cursor:not-allowed}button:not(:disabled){cursor:pointer}button:not(:disabled):hover{text-decoration:none}button:not(:disabled):focus{outline:0}";
 
 const COMPONENT_ID = 'Toolkit.Button';
 let TlkButton = class {
@@ -32,7 +32,7 @@ let TlkButton = class {
     this.mountedHandler();
   }
   render() {
-    return (h(Host, { class: "tlk-button" }, h("button", null, h("slot", null))));
+    return (h(Host, null, h("button", { class: "tlk-button" }, h("slot", null))));
   }
   get self() { return getElement(this); }
 };

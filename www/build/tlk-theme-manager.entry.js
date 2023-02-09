@@ -1,4 +1,4 @@
-import { r as registerInstance, h, f as Host, g as getElement } from './index-1d28747c.js';
+import { r as registerInstance, h, f as Host, g as getElement } from './index-b0ee2f68.js';
 
 const COMPONENT_ID = 'Toolkit.ThemeManager';
 

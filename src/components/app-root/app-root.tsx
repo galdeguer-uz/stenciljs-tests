@@ -1,4 +1,4 @@
-import { Component, h } from '@stencil/core';
+import { Component, h, State } from '@stencil/core';
 
 import allUzStyles from '../../themes/uz';
 import allUtStyles from '../../themes/ut';
@@ -9,6 +9,21 @@ import allUtStyles from '../../themes/ut';
   shadow: true,
 })
 export class AppRoot {
+  constructor() {
+    this.onClickHandler = this.onClickHandler.bind(this);
+  }
+
+  @State() myInfo: object = {};
+  @State() controlledChecked: boolean = false;
+
+  onClickHandler() {
+    this.myInfo = { test: 111 };
+  }
+
+  onChangeCheckbox = (event) => {
+    this.controlledChecked = event.detail.checked;
+  }
+
   render() {
     return (
       <div>
@@ -29,6 +44,36 @@ export class AppRoot {
                 <tlk-button>UT Button</tlk-button>
               </tlk-theme-manager>
             </div>
+          </div>
+
+          <hr />
+
+          <tlk-provider value={this.myInfo}>
+            <div>Hi! I'm inside the tlk-provider</div>
+
+            <tlk-consumer
+              renderer={(value) => (
+                <div>
+                  <p>Test: {JSON.stringify(value)}</p>
+                </div>
+              )}
+            />
+
+            <button onClick={this.onClickHandler}>Click me</button>
+          </tlk-provider>
+
+          <hr />
+
+          <div>
+            <tlk-checkbox checkboxId="basic-checkbox">Check me!</tlk-checkbox>
+          </div>
+
+          <div>
+            <tlk-checkbox checkboxId="default-checked" defaultChecked>Default checked!</tlk-checkbox>
+          </div>
+
+          <div>
+            <tlk-checkbox checkboxId="controlled-checkbox" checked={this.controlledChecked} onCheckboxChanged={this.onChangeCheckbox}>Controlled checkbox!</tlk-checkbox>
           </div>
 
           {/* <tlk-theme-manager styles={styles}>

@@ -5,11 +5,23 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { PlacementProp } from "./components/checkbox/index.logic";
 export namespace Components {
     interface AppRoot {
     }
     interface TlkButton {
         "theme": any;
+    }
+    interface TlkCheckbox {
+        "checkboxId": string;
+        "checked": boolean;
+        "defaultChecked": boolean;
+        "invalid": boolean;
+        "placement": PlacementProp;
+        "theme": any;
+    }
+    interface TlkConsumer {
+        "renderer": Function;
     }
     interface TlkPortal {
         "appendTo": (newContainer: HTMLElement) => Promise<void>;
@@ -19,6 +31,9 @@ export namespace Components {
         "onMounted": (portalElement: HTMLElement) => void;
         "onTransitionEnd": (event: TransitionEvent) => void;
         "theme": any;
+    }
+    interface TlkProvider {
+        "value": any;
     }
     interface TlkThemeManager {
         "avoidInheritStyles": boolean;
@@ -39,11 +54,29 @@ declare global {
         prototype: HTMLTlkButtonElement;
         new (): HTMLTlkButtonElement;
     };
+    interface HTMLTlkCheckboxElement extends Components.TlkCheckbox, HTMLStencilElement {
+    }
+    var HTMLTlkCheckboxElement: {
+        prototype: HTMLTlkCheckboxElement;
+        new (): HTMLTlkCheckboxElement;
+    };
+    interface HTMLTlkConsumerElement extends Components.TlkConsumer, HTMLStencilElement {
+    }
+    var HTMLTlkConsumerElement: {
+        prototype: HTMLTlkConsumerElement;
+        new (): HTMLTlkConsumerElement;
+    };
     interface HTMLTlkPortalElement extends Components.TlkPortal, HTMLStencilElement {
     }
     var HTMLTlkPortalElement: {
         prototype: HTMLTlkPortalElement;
         new (): HTMLTlkPortalElement;
+    };
+    interface HTMLTlkProviderElement extends Components.TlkProvider, HTMLStencilElement {
+    }
+    var HTMLTlkProviderElement: {
+        prototype: HTMLTlkProviderElement;
+        new (): HTMLTlkProviderElement;
     };
     interface HTMLTlkThemeManagerElement extends Components.TlkThemeManager, HTMLStencilElement {
     }
@@ -54,7 +87,10 @@ declare global {
     interface HTMLElementTagNameMap {
         "app-root": HTMLAppRootElement;
         "tlk-button": HTMLTlkButtonElement;
+        "tlk-checkbox": HTMLTlkCheckboxElement;
+        "tlk-consumer": HTMLTlkConsumerElement;
         "tlk-portal": HTMLTlkPortalElement;
+        "tlk-provider": HTMLTlkProviderElement;
         "tlk-theme-manager": HTMLTlkThemeManagerElement;
     }
 }
@@ -65,6 +101,19 @@ declare namespace LocalJSX {
         "onMounted"?: (event: CustomEvent<any>) => void;
         "theme"?: any;
     }
+    interface TlkCheckbox {
+        "checkboxId"?: string;
+        "checked"?: boolean;
+        "defaultChecked"?: boolean;
+        "invalid"?: boolean;
+        "onCheckboxChanged"?: (event: CustomEvent<any>) => void;
+        "placement"?: PlacementProp;
+        "theme"?: any;
+    }
+    interface TlkConsumer {
+        "onConsumerMounted"?: (event: CustomEvent<any>) => void;
+        "renderer"?: Function;
+    }
     interface TlkPortal {
         "container"?: HTMLElement;
         "onAnimationEnd"?: (event: AnimationEvent) => void;
@@ -72,6 +121,10 @@ declare namespace LocalJSX {
         "onMounted"?: (portalElement: HTMLElement) => void;
         "onTransitionEnd"?: (event: TransitionEvent) => void;
         "theme"?: any;
+    }
+    interface TlkProvider {
+        "onConsumerMounted"?: (event: CustomEvent<any>) => void;
+        "value"?: any;
     }
     interface TlkThemeManager {
         "avoidInheritStyles"?: boolean;
@@ -81,7 +134,10 @@ declare namespace LocalJSX {
     interface IntrinsicElements {
         "app-root": AppRoot;
         "tlk-button": TlkButton;
+        "tlk-checkbox": TlkCheckbox;
+        "tlk-consumer": TlkConsumer;
         "tlk-portal": TlkPortal;
+        "tlk-provider": TlkProvider;
         "tlk-theme-manager": TlkThemeManager;
     }
 }
@@ -91,7 +147,10 @@ declare module "@stencil/core" {
         interface IntrinsicElements {
             "app-root": LocalJSX.AppRoot & JSXBase.HTMLAttributes<HTMLAppRootElement>;
             "tlk-button": LocalJSX.TlkButton & JSXBase.HTMLAttributes<HTMLTlkButtonElement>;
+            "tlk-checkbox": LocalJSX.TlkCheckbox & JSXBase.HTMLAttributes<HTMLTlkCheckboxElement>;
+            "tlk-consumer": LocalJSX.TlkConsumer & JSXBase.HTMLAttributes<HTMLTlkConsumerElement>;
             "tlk-portal": LocalJSX.TlkPortal & JSXBase.HTMLAttributes<HTMLTlkPortalElement>;
+            "tlk-provider": LocalJSX.TlkProvider & JSXBase.HTMLAttributes<HTMLTlkProviderElement>;
             "tlk-theme-manager": LocalJSX.TlkThemeManager & JSXBase.HTMLAttributes<HTMLTlkThemeManagerElement>;
         }
     }

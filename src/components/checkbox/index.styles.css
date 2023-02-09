@@ -1,0 +1,149 @@
+.tlk-checkbox {
+  align-items: center;
+  display: inline-flex;
+  line-height: 1;
+  position: relative;
+  vertical-align: middle;
+}
+
+.tlk-checkbox[data-placement="right"] {
+  flex-direction: row;
+}
+
+.tlk-checkbox[data-placement="left"] {
+  flex-direction: row-reverse;
+}
+
+.tlk-checkbox[data-placement="top"] {
+  flex-direction: column-reverse;
+}
+
+.tlk-checkbox[data-placement="bottom"] {
+  flex-direction: column;
+}
+
+.tlk-checkbox .tlk-checkbox__input {
+  border: 0;
+  clip: rect(0 0 0 0);
+  clip: rect(0px, 0px, 0px, 0px);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+.tlk-checkbox .tlk-checkbox__icon-wrapper {
+  align-items: center;
+  border: 1px solid #b6b6b6;
+  border-radius: 4px;
+  color: #fff;
+  cursor: pointer;
+  display: inline-flex;
+  flex-shrink: 0;
+  height: 16px;
+  justify-content: center;
+  transition: background-color 120ms ease 0s, border-color 120ms ease 0s;
+  user-select: none;
+  width: 16px;
+}
+
+.tlk-checkbox .tlk-checkbox__icon-wrapper .tlk-checkbox__icon {
+  display: inline-block;
+  flex-shrink: 0;
+  transform: scale(0.5);
+  vertical-align: middle;
+  width: 100%; /* Needed for Safari */
+}
+
+.tlk-checkbox .tlk-checkbox__icon-wrapper .tlk-checkbox__icon g polygon {
+  fill: #fff;
+  fill-opacity: 0;
+
+  transition: fill-opacity 240ms ease 0s, fill 240ms ease 0s;
+}
+
+.tlk-checkbox:hover > .tlk-checkbox__input:not(:disabled):not([checked]) + .tlk-checkbox__icon-wrapper .tlk-checkbox__icon g polygon {
+  fill: #b6b6b6;
+  fill-opacity: 1;
+}
+
+.tlk-checkbox > .tlk-checkbox__input[checked] + .tlk-checkbox__icon-wrapper .tlk-checkbox__icon g polygon {
+  fill: #fff;
+  fill-opacity: 1;
+}
+
+.tlk-checkbox > .tlk-checkbox__input[aria-invalid="true"] + .tlk-checkbox__icon-wrapper {
+  border-color: #f00314;
+}
+
+.tlk-checkbox:hover > .tlk-checkbox__input[aria-invalid="true"]:not([checked]) + .tlk-checkbox__icon-wrapper {
+  border-color: #b6b6b6;
+}
+
+.tlk-checkbox > .tlk-checkbox__input[aria-invalid="true"]:disabled + .tlk-checkbox__icon-wrapper,
+.tlk-checkbox > .tlk-checkbox__input:disabled + .tlk-checkbox__icon-wrapper {
+  background-color: #b6b6b6;
+  border-color: #b6b6b6;
+  cursor: not-allowed;
+}
+
+.tlk-checkbox > .tlk-checkbox__input[checked] + .tlk-checkbox__icon-wrapper {
+  background-color: #314fff;
+  border-color: #1838f2;
+}
+
+.tlk-checkbox > .tlk-checkbox__input[aria-invalid="true"][checked] + .tlk-checkbox__icon-wrapper {
+  background-color: #f00314;
+  border-color: #ad020e;
+}
+
+.tlk-checkbox > .tlk-checkbox__input[aria-invalid="true"][checked]:disabled + .tlk-checkbox__icon-wrapper,
+.tlk-checkbox > .tlk-checkbox__input[checked]:disabled + .tlk-checkbox__icon-wrapper {
+  background-color: #b6b6b6;
+  border-color: #b6b6b6;
+}
+
+.tlk-checkbox .tlk-checkbox__label {
+  color: #5b6c7f;
+  cursor: pointer;
+  font-size: 14px;
+  user-select: none;
+  transition: color 120ms ease 0s;
+}
+
+.tlk-checkbox .tlk-checkbox__label[data-placement="right"] {
+  padding-left: 8px;
+}
+
+.tlk-checkbox .tlk-checkbox__label[data-placement="left"] {
+  padding-right: 8px;
+}
+
+.tlk-checkbox .tlk-checkbox__label[data-placement="top"] {
+  padding-bottom: 8px;
+}
+
+.tlk-checkbox .tlk-checkbox__label[data-placement="bottom"] {
+  padding-top: 8px;
+}
+
+.tlk-checkbox > .tlk-checkbox__input[aria-invalid="true"] ~ .tlk-checkbox__label,
+.tlk-checkbox > .tlk-checkbox__input[aria-invalid="true"][checked] ~ .tlk-checkbox__label {
+  color: #f00314;
+}
+
+.tlk-checkbox:hover > .tlk-checkbox__input[aria-invalid="true"]:not([checked]) ~ .tlk-checkbox__label {
+  color: #5b6c7f;
+}
+
+.tlk-checkbox > .tlk-checkbox__input[aria-invalid="true"]:disabled ~ .tlk-checkbox__label,
+.tlk-checkbox > .tlk-checkbox__input:disabled ~ .tlk-checkbox__label,
+.tlk-checkbox > .tlk-checkbox__input[aria-invalid="true"][checked]:disabled ~ .tlk-checkbox__label,
+.tlk-checkbox > .tlk-checkbox__input[checked]:disabled ~ .tlk-checkbox__label {
+  color: #b6b6b6;
+  cursor: not-allowed;
+}

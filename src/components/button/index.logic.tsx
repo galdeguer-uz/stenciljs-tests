@@ -50,8 +50,8 @@ export class TlkButton {
 
   render() {
     return (
-      <Host class="tlk-button">
-        <button>
+      <Host>
+        <button class="tlk-button">
           <slot />
         </button>
       </Host>
