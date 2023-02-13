@@ -2,7 +2,7 @@ import { r as registerInstance, h, e as Host, g as getElement } from './index-6f
 
 const COMPONENT_ID = 'Toolkit.Progress';
 
-const indexStylesCss = ".tlk-progress{background-color:#f3f3f3;border-radius:9999px;display:inline-flex;height:16px;overflow:hidden;position:relative;width:100%}.tlk-progress:focus-visible{outline:2px solid blue}.tlk-progress .tlk-progress__bar{background-color:blue;height:100%}.tlk-progress[data-indeterminate] .tlk-progress__bar{animation:1.5s ease 0s infinite normal none running indeterminateAnimation;background:linear-gradient(to right, transparent 0%, blue 50%, transparent 100%);position:absolute;width:50%;will-change:left}@keyframes indeterminateAnimation{0%{left:-50%}100%{left:100%}}";
+const indexStylesCss = ".tlk-progress{background-color:#f3f3f3;border-radius:9999px;display:inline-flex;height:16px;overflow:hidden;position:relative;width:100%}.tlk-progress:focus-visible{outline:2px solid blue}.tlk-progress .tlk-progress__bar{align-items:center;background-color:blue;color:#fff;display:flex;height:100%;justify-content:center}.tlk-progress[data-indeterminate] .tlk-progress__bar{animation:1.5s ease 0s infinite normal none running indeterminateAnimation;background:linear-gradient(to right, transparent 0%, blue 50%, transparent 100%);position:absolute;width:50%;will-change:left}@keyframes indeterminateAnimation{0%{left:-50%}100%{left:100%}}";
 
 let TlkProgress = class {
   constructor(hostRef) {
@@ -47,26 +47,13 @@ let TlkProgress = class {
     }
   }
   componentDidLoad() {
-    if (this.theme) {
-      const newStyle = document.createElement('style');
-      newStyle.appendChild(document.createTextNode(this.theme));
-      const allChildren = Array.from(this.self.shadowRoot.children);
-      const [lastStylesTag] = allChildren.filter((each) => {
-        const tagName = each.tagName.toLowerCase();
-        return tagName === 'style';
-      }).reverse();
-      if (lastStylesTag) {
-        /* Insert the styles from theme just after the last style tag */
-        this.self.shadowRoot.insertBefore(newStyle, lastStylesTag.nextElementSibling);
-      }
-    }
     if (!this.indeterminate) {
       const progressBarElement = this.self.shadowRoot.querySelector('.tlk-progress__bar');
       progressBarElement.style.width = `${this.calculateValueBasedOnMinMax(this.value, this.min, this.max)}%`;
     }
   }
   render() {
-    return (h(Host, null, h("div", Object.assign({ role: "progressbar", class: "tlk-progress", tabIndex: 0, "data-indeterminate": this.indeterminate }, this.getAriaAttributes()), h("div", { class: "tlk-progress__bar" }))));
+    return (h(Host, null, this.theme && (h("style", null, this.theme)), h("div", Object.assign({ role: "progressbar", class: "tlk-progress", tabIndex: 0, "data-indeterminate": this.indeterminate }, this.getAriaAttributes()), h("div", { class: "tlk-progress__bar" }, h("slot", null)))));
   }
   static get delegatesFocus() { return true; }
   get self() { return getElement(this); }

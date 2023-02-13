@@ -13,8 +13,12 @@
 }
 
 .tlk-progress .tlk-progress__bar {
+  align-items: center;
   background-color: blue;
+  color: #fff;
+  display: flex;
   height: 100%;
+  justify-content: center;
 }
 
 .tlk-progress[data-indeterminate] .tlk-progress__bar {

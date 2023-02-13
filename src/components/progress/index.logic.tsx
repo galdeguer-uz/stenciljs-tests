@@ -1,4 +1,4 @@
-import { Component, Prop, h, Element, State, Watch, Host } from '@stencil/core';
+import { Component, Prop, h, Element, Watch, Host } from '@stencil/core';
 
 import COMPONENT_ID from './constants';
 
@@ -83,7 +83,9 @@ export class TlkProgress {
           data-indeterminate={this.indeterminate}
           {...this.getAriaAttributes()}
         >
-          <div class="tlk-progress__bar" />
+          <div class="tlk-progress__bar">
+            <slot />
+          </div>
         </div>
       </Host>
     );

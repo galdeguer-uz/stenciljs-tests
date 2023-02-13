@@ -98,6 +98,13 @@ export class AppRoot {
           </div>
 
           <div>
+            <label>25% with label</label>
+            <tlk-progress value={25}>
+              25%
+            </tlk-progress>
+          </div>
+
+          <div>
             <label>40% progress</label>
             <tlk-progress value={40} />
           </div>
