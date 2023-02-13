@@ -1,0 +1,35 @@
+.tlk-progress {
+  background-color: #f3f3f3;
+  border-radius: 9999px;
+  display: inline-flex;
+  height: 16px;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.tlk-progress:focus-visible {
+  outline: 2px solid blue;
+}
+
+.tlk-progress .tlk-progress__bar {
+  background-color: blue;
+  height: 100%;
+}
+
+.tlk-progress[data-indeterminate] .tlk-progress__bar {
+  animation: 1.5s ease 0s infinite normal none running indeterminateAnimation;
+  background: linear-gradient(to right, transparent 0%, blue 50%, transparent 100%);
+  position: absolute;
+  width: 50%;
+  will-change: left;
+}
+
+@keyframes indeterminateAnimation {
+  0% {
+    left: -50%;
+  }
+  100% {
+    left: 100%;
+  }
+}

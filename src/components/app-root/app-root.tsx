@@ -1,7 +1,21 @@
 import { Component, h, State } from '@stencil/core';
 
+import { TlkProgress } from '../progress';
+
 import allUzStyles from '../../themes/uz';
 import allUtStyles from '../../themes/ut';
+
+const styles = {
+  [TlkProgress.COMPONENT_ID]: `
+    .tlk-progress {
+      background-color: rgba(196, 0, 218, 0.156);
+    }
+
+    .tlk-progress .tlk-progress__bar {
+      background-color: #f811a3;
+    }
+  `,
+};
 
 @Component({
   tag: 'app-root',
@@ -74,6 +88,40 @@ export class AppRoot {
 
           <div>
             <tlk-checkbox checkboxId="controlled-checkbox" checked={this.controlledChecked} onCheckboxChanged={this.onChangeCheckbox}>Controlled checkbox!</tlk-checkbox>
+          </div>
+
+          <hr />
+
+          <div>
+            <label>0% progress</label>
+            <tlk-progress />
+          </div>
+
+          <div>
+            <label>40% progress</label>
+            <tlk-progress value={40} />
+          </div>
+
+          <div>
+            <label>100% progress</label>
+            <tlk-progress value={100} />
+          </div>
+
+          <div>
+            <label>Different min & max (min=15, max=85, value=26)</label>
+            <tlk-progress min={15} max={85} value={26} />
+          </div>
+
+          <div>
+            <label>Indeterminate</label>
+            <tlk-progress indeterminate />
+          </div>
+
+          <div>
+            <label>Styled progress using tlk-theme-manager</label>
+            <tlk-theme-manager styles={styles}>
+              <tlk-progress value={25} />
+            </tlk-theme-manager>
           </div>
 
           {/* <tlk-theme-manager styles={styles}>

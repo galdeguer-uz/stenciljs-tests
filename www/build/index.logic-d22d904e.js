@@ -1,4 +1,4 @@
-import { r as registerInstance, e as createEvent, h, f as Host, g as getElement } from './index-4012631a.js';
+import { r as registerInstance, f as createEvent, h, e as Host, g as getElement } from './index-6f8a5f60.js';
 
 const indexStylesCss = ".tlk-button{align-items:center;display:inline-flex;flex:0 0 auto;justify-content:center;overflow:hidden;position:relative;text-align:center;user-select:none;vertical-align:middle;white-space:nowrap}button:disabled{cursor:not-allowed}button:not(:disabled){cursor:pointer}button:not(:disabled):hover{text-decoration:none}button:not(:disabled):focus{outline:0}";
 

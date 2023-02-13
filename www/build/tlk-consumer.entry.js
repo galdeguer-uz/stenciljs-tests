@@ -1,4 +1,4 @@
-import { r as registerInstance, e as createEvent } from './index-b0ee2f68.js';
+import { r as registerInstance, f as createEvent } from './index-6f8a5f60.js';
 
 let TlkConsumer = class {
   constructor(hostRef) {

@@ -32,6 +32,13 @@ export namespace Components {
         "onTransitionEnd": (event: TransitionEvent) => void;
         "theme": any;
     }
+    interface TlkProgress {
+        "indeterminate": boolean;
+        "max": number;
+        "min": number;
+        "theme": any;
+        "value": number;
+    }
     interface TlkProvider {
         "value": any;
     }
@@ -72,6 +79,12 @@ declare global {
         prototype: HTMLTlkPortalElement;
         new (): HTMLTlkPortalElement;
     };
+    interface HTMLTlkProgressElement extends Components.TlkProgress, HTMLStencilElement {
+    }
+    var HTMLTlkProgressElement: {
+        prototype: HTMLTlkProgressElement;
+        new (): HTMLTlkProgressElement;
+    };
     interface HTMLTlkProviderElement extends Components.TlkProvider, HTMLStencilElement {
     }
     var HTMLTlkProviderElement: {
@@ -90,6 +103,7 @@ declare global {
         "tlk-checkbox": HTMLTlkCheckboxElement;
         "tlk-consumer": HTMLTlkConsumerElement;
         "tlk-portal": HTMLTlkPortalElement;
+        "tlk-progress": HTMLTlkProgressElement;
         "tlk-provider": HTMLTlkProviderElement;
         "tlk-theme-manager": HTMLTlkThemeManagerElement;
     }
@@ -122,6 +136,13 @@ declare namespace LocalJSX {
         "onTransitionEnd"?: (event: TransitionEvent) => void;
         "theme"?: any;
     }
+    interface TlkProgress {
+        "indeterminate"?: boolean;
+        "max"?: number;
+        "min"?: number;
+        "theme"?: any;
+        "value"?: number;
+    }
     interface TlkProvider {
         "onConsumerMounted"?: (event: CustomEvent<any>) => void;
         "value"?: any;
@@ -137,6 +158,7 @@ declare namespace LocalJSX {
         "tlk-checkbox": TlkCheckbox;
         "tlk-consumer": TlkConsumer;
         "tlk-portal": TlkPortal;
+        "tlk-progress": TlkProgress;
         "tlk-provider": TlkProvider;
         "tlk-theme-manager": TlkThemeManager;
     }
@@ -150,6 +172,7 @@ declare module "@stencil/core" {
             "tlk-checkbox": LocalJSX.TlkCheckbox & JSXBase.HTMLAttributes<HTMLTlkCheckboxElement>;
             "tlk-consumer": LocalJSX.TlkConsumer & JSXBase.HTMLAttributes<HTMLTlkConsumerElement>;
             "tlk-portal": LocalJSX.TlkPortal & JSXBase.HTMLAttributes<HTMLTlkPortalElement>;
+            "tlk-progress": LocalJSX.TlkProgress & JSXBase.HTMLAttributes<HTMLTlkProgressElement>;
             "tlk-provider": LocalJSX.TlkProvider & JSXBase.HTMLAttributes<HTMLTlkProviderElement>;
             "tlk-theme-manager": LocalJSX.TlkThemeManager & JSXBase.HTMLAttributes<HTMLTlkThemeManagerElement>;
         }

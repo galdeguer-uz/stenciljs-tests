@@ -1,4 +1,4 @@
-import { r as registerInstance, h, f as Host, g as getElement } from './index-b0ee2f68.js';
+import { r as registerInstance, h, e as Host, g as getElement } from './index-6f8a5f60.js';
 
 const COMPONENT_ID = 'Toolkit.Portal';
 
