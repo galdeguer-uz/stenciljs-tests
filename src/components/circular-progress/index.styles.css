@@ -1,0 +1,39 @@
+.tlk-circular-progress {
+  height: 120px;
+  width: 120px;
+}
+
+.tlk-circular-progress .tlk-circular-progress__bar {
+  display: inline-flex;
+  vertical-align: bottom;
+  width: 100%;
+  height: 100%;
+}
+
+.tlk-circular-progress .tlk-circular-progress__bar .tlk-circular-progress__background {
+  stroke: rgba(0, 0, 0, 0.25);
+  stroke-width: 5px;
+  stroke-dasharray: 0;
+  fill: none;
+}
+
+.tlk-circular-progress .tlk-circular-progress__bar .tlk-circular-progress__path {
+  stroke-width: 5px;
+  stroke: blue;
+  fill: none;
+  transform-origin: center center;
+  transform: rotate(-90deg) scaleX(-1);
+}
+
+.tlk-circular-progress[data-indeterminate] {
+  animation: 1.5s ease 0s infinite normal none running indeterminateAnimation;
+}
+
+@keyframes indeterminateAnimation {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

@@ -20,6 +20,14 @@ export namespace Components {
         "placement": PlacementProp;
         "theme": any;
     }
+    interface TlkCircularProgress {
+        "indeterminate": boolean;
+        "max": number;
+        "min": number;
+        "size": string;
+        "theme": any;
+        "value": number;
+    }
     interface TlkConsumer {
         "renderer": Function;
     }
@@ -36,6 +44,7 @@ export namespace Components {
         "indeterminate": boolean;
         "max": number;
         "min": number;
+        "size": string;
         "theme": any;
         "value": number;
     }
@@ -66,6 +75,12 @@ declare global {
     var HTMLTlkCheckboxElement: {
         prototype: HTMLTlkCheckboxElement;
         new (): HTMLTlkCheckboxElement;
+    };
+    interface HTMLTlkCircularProgressElement extends Components.TlkCircularProgress, HTMLStencilElement {
+    }
+    var HTMLTlkCircularProgressElement: {
+        prototype: HTMLTlkCircularProgressElement;
+        new (): HTMLTlkCircularProgressElement;
     };
     interface HTMLTlkConsumerElement extends Components.TlkConsumer, HTMLStencilElement {
     }
@@ -101,6 +116,7 @@ declare global {
         "app-root": HTMLAppRootElement;
         "tlk-button": HTMLTlkButtonElement;
         "tlk-checkbox": HTMLTlkCheckboxElement;
+        "tlk-circular-progress": HTMLTlkCircularProgressElement;
         "tlk-consumer": HTMLTlkConsumerElement;
         "tlk-portal": HTMLTlkPortalElement;
         "tlk-progress": HTMLTlkProgressElement;
@@ -124,6 +140,14 @@ declare namespace LocalJSX {
         "placement"?: PlacementProp;
         "theme"?: any;
     }
+    interface TlkCircularProgress {
+        "indeterminate"?: boolean;
+        "max"?: number;
+        "min"?: number;
+        "size"?: string;
+        "theme"?: any;
+        "value"?: number;
+    }
     interface TlkConsumer {
         "onConsumerMounted"?: (event: CustomEvent<any>) => void;
         "renderer"?: Function;
@@ -140,6 +164,7 @@ declare namespace LocalJSX {
         "indeterminate"?: boolean;
         "max"?: number;
         "min"?: number;
+        "size"?: string;
         "theme"?: any;
         "value"?: number;
     }
@@ -156,6 +181,7 @@ declare namespace LocalJSX {
         "app-root": AppRoot;
         "tlk-button": TlkButton;
         "tlk-checkbox": TlkCheckbox;
+        "tlk-circular-progress": TlkCircularProgress;
         "tlk-consumer": TlkConsumer;
         "tlk-portal": TlkPortal;
         "tlk-progress": TlkProgress;
@@ -170,6 +196,7 @@ declare module "@stencil/core" {
             "app-root": LocalJSX.AppRoot & JSXBase.HTMLAttributes<HTMLAppRootElement>;
             "tlk-button": LocalJSX.TlkButton & JSXBase.HTMLAttributes<HTMLTlkButtonElement>;
             "tlk-checkbox": LocalJSX.TlkCheckbox & JSXBase.HTMLAttributes<HTMLTlkCheckboxElement>;
+            "tlk-circular-progress": LocalJSX.TlkCircularProgress & JSXBase.HTMLAttributes<HTMLTlkCircularProgressElement>;
             "tlk-consumer": LocalJSX.TlkConsumer & JSXBase.HTMLAttributes<HTMLTlkConsumerElement>;
             "tlk-portal": LocalJSX.TlkPortal & JSXBase.HTMLAttributes<HTMLTlkPortalElement>;
             "tlk-progress": LocalJSX.TlkProgress & JSXBase.HTMLAttributes<HTMLTlkProgressElement>;

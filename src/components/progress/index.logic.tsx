@@ -46,6 +46,8 @@ export class TlkProgress {
 
   @Prop() theme: any;
 
+  @Prop({ reflect: true}) size: string;
+
   @Prop() indeterminate: boolean = false;
   @Prop() min: number = 0;
   @Prop() max: number = 100;

@@ -1,6 +1,7 @@
 import { Component, h, State } from '@stencil/core';
 
 import { TlkProgress } from '../progress';
+import { TlkCircularProgress } from '../circular-progress';
 
 import allUzStyles from '../../themes/uz';
 import allUtStyles from '../../themes/ut';
@@ -8,11 +9,43 @@ import allUtStyles from '../../themes/ut';
 const styles = {
   [TlkProgress.COMPONENT_ID]: `
     .tlk-progress {
-      background-color: rgba(196, 0, 218, 0.156);
+      background-color: #DDE0E4;
+      border-radius: 20px;
+      height: 8px;
     }
 
     .tlk-progress .tlk-progress__bar {
-      background-color: #f811a3;
+      background-color: #315CFD;
+      border-radius: 20px;
+    }
+
+    :host([size="md"]) .tlk-progress {
+      height: 8px;
+    }
+
+    :host([size="lg"]) .tlk-progress {
+      height: 16px;
+    }
+  `,
+  [TlkCircularProgress.COMPONENT_ID]: `
+    .tlk-circular-progress .tlk-circular-progress__bar .tlk-circular-progress__background  {
+      stroke: #dde0e4;
+      stroke-width: 10px;
+    }
+
+    .tlk-circular-progress .tlk-circular-progress__bar .tlk-circular-progress__path {
+      stroke: #315CFD;
+      stroke-width: 10px;
+    }
+
+    :host([size="md"]) .tlk-circular-progress {
+      height: 32px;
+      width: 32px;
+    }
+
+    :host([size="lg"]) .tlk-circular-progress {
+      height: 48px;
+      width: 48px;
     }
   `,
 };
@@ -93,6 +126,36 @@ export class AppRoot {
           <hr />
 
           <div>
+            <label>Circular progress 0%</label>
+            <tlk-circular-progress />
+          </div>
+
+          <div>
+            <label>Circular progress 45%</label>
+            <tlk-circular-progress value={45} />
+          </div>
+
+          <div>
+            <label>Circular progress 66%</label>
+            <tlk-circular-progress value={66} />
+          </div>
+
+          <div>
+            <label>Circular progress 100%</label>
+            <tlk-circular-progress value={100} />
+          </div>
+
+          <div>
+            <label>Different min & max (min=15, max=85, value=26)</label>
+            <tlk-circular-progress min={15} max={85} value={26} />
+          </div>
+
+          <div>
+            <label>Indeterminate</label>
+            <tlk-circular-progress indeterminate />
+          </div>
+
+          <div>
             <label>0% progress</label>
             <tlk-progress />
           </div>
@@ -124,10 +187,24 @@ export class AppRoot {
             <tlk-progress indeterminate />
           </div>
 
+          <hr />
+
           <div>
-            <label>Styled progress using tlk-theme-manager</label>
+            <label>Styled progress using tlk-theme-manager (UT Theme)</label>
             <tlk-theme-manager styles={styles}>
-              <tlk-progress value={25} />
+              <tlk-progress value={0} size="md" />
+              <tlk-progress value={0} size="lg" />
+              <tlk-progress value={25} size="md" />
+              <tlk-progress value={25} size="lg" />
+              <tlk-progress value={100} size="md" />
+              <tlk-progress value={100} size="lg" />
+
+              <tlk-circular-progress value={0} size="md" />
+              <tlk-circular-progress value={0} size="lg" />
+              <tlk-circular-progress value={25} size="md" />
+              <tlk-circular-progress value={25} size="lg" />
+              <tlk-circular-progress value={100} size="md" />
+              <tlk-circular-progress value={100} size="lg" />
             </tlk-theme-manager>
           </div>
 
